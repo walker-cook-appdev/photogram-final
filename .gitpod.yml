@@ -1,4 +1,4 @@
-image: jelaniwoods/appdev2021-photogram-final@sha256:61df2dae2b4da8caaecdc6bf708764aeaf171d9bfcb353dd309d77cd5c53e76d
+image: jelaniwoods/appdev2021-photogram-final-hotfix
 
 tasks:
   - command: bundle install
