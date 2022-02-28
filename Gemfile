@@ -35,7 +35,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
 gem 'rack-timeout', require: 'rack/timeout/base'
 gem 'sprockets', '< 4'
 gem 'sassc-rails'
@@ -60,6 +59,8 @@ group :development do
   gem 'letter_opener'
   gem 'meta_request'
   gem 'rails_db', '2.3.1'
+  gem 'rufo'
+  gem 'htmlbeautifier'
 end
 
 group :test do
