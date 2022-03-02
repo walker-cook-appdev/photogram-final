@@ -20,25 +20,30 @@ class UsersController < ApplicationController
   def sign_out
     reset_session
 
-    redirect_to("/", {:notice => "See you later!"})
+    redirect_to("/", {:notice => "Signed out successfully."})
   end
 
   def sign_in
-    render({ :template => "users/signinform.html.erb" })
+    render({ :template => "users/signinform.html.erb"})
   end
 
+  def follow
+    
+  end
+
+
   def authenticate
-  un = params.fetch("input_username")
+  email = params.fetch("input_email")
   pw = params.fetch("input_password")
 
-  user = User.where({:username=>un}).at(0)
+  user = User.where({:email=>email}).at(0)
 
   if user == nil
     redirect_to("/user_sign_in", {:alert=> "No one by that name here"})
   else
     if user.authenticate(pw)
       session.store(:user_id, user.id)
-      redirect_to("/", {:notice => "Welcome back," + user.username + "!"})
+      redirect_to("/", {:notice =>  "Signed in successfully."} )
     else
       redirect_to("user_sign_in", {:alert=> "nice try"})
     end
@@ -49,6 +54,8 @@ class UsersController < ApplicationController
     user = User.new
 
     user.username = params.fetch("input_username")
+    user.email = params.fetch("input_email")
+    user.private = params.fetch("input_private")
     user.password = params.fetch("input_password")
     user.password_confirmation = params.fetch("input_password_confirmation")
 

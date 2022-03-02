@@ -47,4 +47,6 @@ Rails.application.routes.draw do
   get("/user_sign_in", {:controller => "users", :action => "sign_in" })
   post("verify_credentials", {:controller => "users", :action => "authenticate" })
 
+  get("/follow", {:controller => "users", :action => "follow" })
+
 end
