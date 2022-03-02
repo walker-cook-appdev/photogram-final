@@ -1,5 +1,6 @@
 <h1>List of photos</h1>
 
+<%if session.fetch(:user_id) != nil%>
 <form action="/insert_photo_record">
   <label for="browser_input">Image</label>
   <input id="browser_input" type="text" name="input_image" placeholder="Enter a URL for the image...">
@@ -8,6 +9,7 @@
   <textarea id="browser_caption" name="input_caption" placeholder="Enter a caption for the photo..."></textarea>
 
   <button>Add photo</button>
+  <%end%>
 </form>
 
 <hr>
@@ -36,7 +38,7 @@
     </td>
 
     <td>
-      <%= photo.created_at %>
+      <%= time_ago_in_words(photo.created_at) %>
     </td>
 
     <td>

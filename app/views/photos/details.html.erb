@@ -18,7 +18,7 @@
 
   <dt>Posted</dt>
   <dd>
-    2 months ago
+    <%=time_ago_in_words(@photo.created_at)%> ago
   </dd>
 <% if @user_id == @photo.owner_id%>
   <dt>Edit photo</dt>

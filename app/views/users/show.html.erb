@@ -3,15 +3,25 @@
 <dl>
   <dt>ID</dt>
   <dd><%= @user.id %></dd>
+  <dt>Private</dt>
+  <dd><%= @user.private.to_s %></dd>
 
+  <%if session.fetch(:user_id) != @user.id%>
+  <td>
+      <form action="/follow">
+    <label for="follow_user"></label>
+    <button id="follow_user"  type="button"  name="follow_user">Follow</button>
+    <%end%>
+    </td>
+<%if session.fetch(:user_id) == @user.id%>
   <dt>Edit user</dt>
   <dd>
     <form action="/update_user/<%= @user.id %>" >
       <label for="browser_username">Username</label>
       <input id="browser_username" type="text" name="input_username" placeholder="Enter a username..." value="<%= @user.username %>">
-
       <button>Update user</button>
     </form>
+    <%end%>
   </dd>
 </dl>
 
@@ -53,7 +63,7 @@
     </td>
 
     <td>
-      <%= photo.created_at %>
+      <%= time_ago_in_words(photo.created_at) %> ago
     </td>
     
     <td>
